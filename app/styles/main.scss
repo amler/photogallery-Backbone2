@@ -1,0 +1,82 @@
+// bower:scss
+// endbower
+// blue: #55cbe3
+// light grey #A7A7A7
+
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+.slideshow-container {
+    margin: 50px auto 100px;
+    padding: 10px;
+    min-height: 300px;
+    width: 960px;
+
+    .image-detail {
+        float: left;
+        border-radius: 5px;
+        background-color: #333;
+        color: #fff;
+        width: 500px;
+        height: 500px;
+        padding: 10px;
+
+        .image-container {
+            overflow: hidden;
+            height: 350px;
+            width: 500px;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        p {
+            margin: 10px 0 0 0;
+            padding: 0;
+        }
+
+        input {
+            display: block;
+            margin: 10px 0 10px 0;
+            height: 20px;
+            width: 400px;
+        }
+
+        .button {
+            float: right;
+            border-radius: 3px;
+            background-color: #55cbe3;
+            color: #333;
+            cursor: pointer;
+            width: 80px;
+
+
+            &:focus {
+                outline-color: transparent;
+                outline-style: none;
+            }
+        }
+    }
+
+    .thumbnail-container {
+        float: left;
+        width: 400px;
+        height: 600px;
+        padding: 20px;
+        overflow: scroll;
+
+        .thumbnails {
+            margin: 0 13px 0 0;            
+            float: left;
+            
+            img {
+                height: 120px;
+                width: 120px; 
+            }
+        }
+    }
+}
