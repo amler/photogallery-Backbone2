@@ -24,20 +24,19 @@
             <div class="image-detail">
                 <!-- IMAGE DETAIL HERE-->
             </div>
-            <!-- THUMBNAILS ASSHOLE -->
+            <!-- THUMBNAILS -->
             <div class="thumbnail-container"></div>
 
         </div>
 
         <!-- TEMPLATES -->
-
             <!-- DETAILS TEMPLATE -->
         <script type="text/template" class="image-detail-display-template">
                 <div class="image-container">
                     <img src="<%= url %>">
                 </div>
                 <p>"<%= url %>"</p>
-                <p>"<%= caption %>"</p>
+                <p><%= caption ? caption: 'NO CAPTION' %></p>
                 <button class="edit button">Edit</button>
         </script>
             <!-- DETAILS EDIT TEMPLATE -->
@@ -46,12 +45,15 @@
                 <img src="<%= url %>">
             </div>
             <input class="urlvalue" type="text" value="<%= url %>">
-            <input class="captionvalue" type="text" value="<%= caption %>">
+            <input class="captionvalue" type="text" value=<%= caption ? caption: 'NO CAPTION' %>>
+            <button class="new button">New</button>
             <button class="save button">Save</button>
+            <div class="loaded"></div>
         </script>
             <!-- THUMBNAILS TEMPLATE -->
         <script type="text/template" class="thumbnail-template">
             <img src="<%= url %>">
+            <p><%= caption ? caption: 'NO CAPTION' %></p>
         </script>
         
         <!-- build:js scripts/vendor.js -->
