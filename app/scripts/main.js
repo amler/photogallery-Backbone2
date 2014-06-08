@@ -77,11 +77,14 @@ var DetailView = Backbone.View.extend({
 
 	initialize: function() {
 		// telling this view to reredner any changes to the model
-		
+		this.listenTo(picGallery, 'add', function(pic) {
+			new ThumbnailView({model: pic})
+		})
+
 		// tells the view to rerender itself when the model is changed (aka edit)
 		this.listenTo(this.model, 'change', this.render);
 		// targeting that class
-		$('.image-detail').append(this.el);
+		$('.image-detail').prepend(this.el);
 		this.render();
 	},
 
@@ -117,18 +120,23 @@ var DetailView = Backbone.View.extend({
 
 		this.model.save();
 		//console.log(this.model);
-		// this.render();
+		this.render();
 	},
 
 	createImage: function() {
 		var newPic = new Pic();
 		this.model = newPic
+		// simplest way to clear the current model rendered in the detail view 
+			//both imputs are cleared
 		this.$el.find('.urlvalue').val('');
 		this.$el.find('.captionvalue').val('');
+			// changes the img tag attribute with a placeholder
 	    this.$el.find('img').attr('src','http://fc09.deviantart.net/fs70/f/2010/070/b/e/Insert_Title_Here_by_Psychokill.png');
 	},
 
 	destroy: function() {
+		console.log(this.model);
+			debugger
 		var sureDelete = confirm("Are you sure you to delete this?");
 		if (sureDelete === true) {
 			this.model.destroy();

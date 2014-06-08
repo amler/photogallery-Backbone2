@@ -38,6 +38,7 @@ body {
         p {
             margin: 10px 0 10px 0;
             padding: 0;
+            word-break:break-all;
         }
 
         input {
@@ -48,22 +49,23 @@ body {
         }
 
         button {
-            display: block;
-            border-radius: 3px;
             background-color: #55cbe3;
+            border-radius: 3px;
+            border: none;
             color: #55cbe3;
             cursor: pointer;
+            display: block;
             font-size: 24px;
             height: 50px;
             margin: 10px 0 10px 0;
             text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.50), 
-                        1px 1px 1px rgba(0, 0, 0, 0.50); 
+                          1px 1px 1px rgba(0, 0, 0, 0.50); 
             text-transform: uppercase;
             width: 500px;
 
 
             &:hover {
-                background-color: #55cbe3;
+                background-color: #77D5E9;
             }
 
             &:active {
@@ -78,7 +80,33 @@ body {
         }
 
         .delete {
-            background-color: red;
+            background-color: #FF9966;
+            color: #FF9966;
+
+            &:hover {
+                background-color: #FFB894;
+                color: #FF9966;
+            }
+
+            &:active {
+                color: #FFF;
+                background-color: #E68A5C;
+            }
+        }
+
+        .new {
+            background-color: #8AE6B8;
+            color: #8AE6B8;
+
+            &:hover {
+                background-color: #99FFCC;
+                color: #8AE6B8;
+            }
+
+            &:active {
+                background-color: #6BB28F;
+                color: #FFF;
+            }
         }
     }
 
@@ -90,8 +118,7 @@ body {
         overflow: scroll;
 
         .thumbnails {
-            background-color: #333;
-            color: #fff;
+            color: #333;
             float: left;
             font-size: 12px;
             margin: 0 13px 10px 0;            
@@ -106,6 +133,10 @@ body {
             p {
                 margin: 0;
                 padding: 5px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 100px;
             }
         }
     }
