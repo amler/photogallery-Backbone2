@@ -36,7 +36,7 @@ body {
         }
 
         p {
-            margin: 10px 0 0 0;
+            margin: 10px 0 10px 0;
             padding: 0;
         }
 
@@ -44,17 +44,32 @@ body {
             display: block;
             margin: 10px 0 10px 0;
             height: 20px;
-            width: 400px;
+            width: 495px;
         }
 
-        .button {
-            float: right;
+        button {
+            display: block;
             border-radius: 3px;
             background-color: #55cbe3;
-            color: #333;
+            color: #55cbe3;
             cursor: pointer;
-            width: 80px;
+            font-size: 24px;
+            height: 50px;
+            margin: 10px 0 10px 0;
+            text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.50), 
+                        1px 1px 1px rgba(0, 0, 0, 0.50); 
+            text-transform: uppercase;
+            width: 500px;
 
+
+            &:hover {
+                background-color: #55cbe3;
+            }
+
+            &:active {
+                color: #FFF;
+                background-color: #44A2B6;
+            }
 
             &:focus {
                 outline-color: transparent;
@@ -71,13 +86,22 @@ body {
         overflow: scroll;
 
         .thumbnails {
-            margin: 0 13px 0 0;            
+            background-color: #333;
+            color: #fff;
             float: left;
-            text-overflow: ellipsis;
-            
+            font-size: 12px;
+            margin: 0 13px 10px 0;            
+            height: 130px;
+            width: 120px;
+
             img {
-                height: 120px;
-                width: 120px; 
+                height: 100px;
+                width: 100%;
+            }
+
+            p {
+                margin: 0;
+                padding: 5px;
             }
         }
     }

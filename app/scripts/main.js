@@ -61,7 +61,7 @@ var ThumbnailView = Backbone.View.extend({
 /////////////////////////////
 // Detail View
 /////////////////////////////
-
+var globalTest;
 var DetailView = Backbone.View.extend({
 
 	template: _.template($('.image-detail-display-template').text()),
@@ -76,9 +76,10 @@ var DetailView = Backbone.View.extend({
 
 	initialize: function() {
 		// telling view to listen for new additions
-		/*this.listenTo(picGallery, 'add' function(pic) {
-			new ThumbnailView({model: pic})
-		})*/
+		this.listenTo(picGallery, 'add', function(pic) {
+
+			new ThumbnailView({model: pic});
+		});
 		// telling this view to reredner any changes to the model
 		this.listenTo(this.model, 'change', this.render);
 		// targeting that class
@@ -101,7 +102,7 @@ var DetailView = Backbone.View.extend({
 	},
 
 	saveImage: function(){
-
+		
 		this.model.set({
 			url: this.$el.find('.urlvalue').val(),
 			caption: this.$el.find('.captionvalue').val()
@@ -112,6 +113,7 @@ var DetailView = Backbone.View.extend({
 
 		this.model.save();
 		//console.log(this.model);
+
 	},
 
 	createImage: function() {

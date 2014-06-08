@@ -35,24 +35,23 @@
                 <div class="image-container">
                     <img src="<%= url %>">
                 </div>
-                <p>"<%= url %>"</p>
+                <p><%= url %></p>
                 <p><%= caption ? caption: 'NO CAPTION' %></p>
                 <button class="edit button">Edit</button>
         </script>
             <!-- DETAILS EDIT TEMPLATE -->
         <script type="text/template" class="image-edit-detail-template">
             <div class="image-container">
-                <img src="<%= url %>">
+                <img src=<%= url %>>
             </div>
-            <input class="urlvalue" type="text" value="<%= url %>">
+            <input class="urlvalue" type="text" placeholder value=<%= url %>>
             <input class="captionvalue" type="text" value=<%= caption ? caption: 'NO CAPTION' %>>
-            <button class="new button">New</button>
             <button class="save button">Save</button>
-            <div class="loaded"></div>
+            <button class="new button">New</button>
         </script>
             <!-- THUMBNAILS TEMPLATE -->
         <script type="text/template" class="thumbnail-template">
-            <img src="<%= url %>">
+            <img src=<%= url %>>
             <p><%= caption ? caption: 'NO CAPTION' %></p>
         </script>
         
