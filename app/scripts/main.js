@@ -17,7 +17,7 @@ var Pic = Backbone.Model.extend({
 /////////////////////////////
 var PicsCollection = Backbone.Collection.extend({
 	model: Pic,
-	url: 'http://tiny-pizza-server.herokuapp.com/collections/scamler-photos' 
+	url: 'http://tiny-pizza-server.herokuapp.com/collections/photos' 
 });
 
 /////////////////////////////
@@ -36,7 +36,7 @@ var ThumbnailView = Backbone.View.extend({
 
 	// 90% of the time will be a render function
 	initialize: function() {
-		// telling the view to keep track of events - render is a reference since this function is calling
+		// telling the view to keep track of events - render is a reference since this function is calling render. Any changes made to the model from another view 
 		this.listenTo(this.model, 'change', this.render);
 		//adding to the empty div on the DOM container
 		$('.thumbnail-container').append(this.el);
@@ -61,7 +61,7 @@ var ThumbnailView = Backbone.View.extend({
 /////////////////////////////
 // Detail View
 /////////////////////////////
-var globalTest;
+
 var DetailView = Backbone.View.extend({
 
 	template: _.template($('.image-detail-display-template').text()),
@@ -69,18 +69,16 @@ var DetailView = Backbone.View.extend({
 	//newTemplate: _.template($('.image-add-detail-template').text()),
 
 	events: {
-		'click .edit' : 'editImage',
-		'click .save' : 'saveImage',
-		'click .new' : 'createImage'
+		'click .edit'	: 'editImage',
+		'click .save' 	: 'saveImage',
+		'click .delete' : 'destroy',
+		'click .new' 	: 'createImage'
 	},
 
 	initialize: function() {
-		// telling view to listen for new additions
-		this.listenTo(picGallery, 'add', function(pic) {
-
-			new ThumbnailView({model: pic});
-		});
 		// telling this view to reredner any changes to the model
+		
+		// tells the view to rerender itself when the model is changed (aka edit)
 		this.listenTo(this.model, 'change', this.render);
 		// targeting that class
 		$('.image-detail').append(this.el);
@@ -102,10 +100,16 @@ var DetailView = Backbone.View.extend({
 	},
 
 	saveImage: function(){
-		
+		var urlValue = this.$el.find('.urlvalue').val();
+		var captionValue = this.$el.find('.captionvalue').val();
+
+		if (captionValue == 0 && urlValue == 0) {
+			alert("Please enter in a url and caption");
+			return;
+		}
 		this.model.set({
-			url: this.$el.find('.urlvalue').val(),
-			caption: this.$el.find('.captionvalue').val()
+			url: urlValue,
+			caption: captionValue
 		});
 		
 		// adding to the collection from the createImage click and then saving
@@ -113,7 +117,7 @@ var DetailView = Backbone.View.extend({
 
 		this.model.save();
 		//console.log(this.model);
-
+		// this.render();
 	},
 
 	createImage: function() {
@@ -122,6 +126,14 @@ var DetailView = Backbone.View.extend({
 		this.$el.find('.urlvalue').val('');
 		this.$el.find('.captionvalue').val('');
 	    this.$el.find('img').attr('src','http://fc09.deviantart.net/fs70/f/2010/070/b/e/Insert_Title_Here_by_Psychokill.png');
+	},
+
+	destroy: function() {
+		var sureDelete = confirm("Are you sure you to delete this?");
+		if (sureDelete === true) {
+			this.model.destroy();
+			this.remove();
+		}
 	}
 });
 
