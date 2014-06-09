@@ -17,7 +17,7 @@ var Pic = Backbone.Model.extend({
 /////////////////////////////
 var PicsCollection = Backbone.Collection.extend({
 	model: Pic,
-	url: 'http://tiny-pizza-server.herokuapp.com/collections/photos' 
+	url: 'http://tiny-pizza-server.herokuapp.com/collections/scamler-photos' 
 });
 
 /////////////////////////////
@@ -141,6 +141,8 @@ var DetailView = Backbone.View.extend({
 		if (sureDelete === true) {
 			this.model.destroy();
 			this.remove();
+			detailInstance = new DetailView({model: picGallery.first()})
+
 		}
 	}
 });
