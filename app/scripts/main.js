@@ -157,6 +157,7 @@ var DetailView = Backbone.View.extend({
 /////////////////////////////
 // Router
 /////////////////////////////
+var detailInstance = null;
 
 var appRouter = Backbone.Router.extend({
 	routes: {
@@ -176,12 +177,18 @@ var appRouter = Backbone.Router.extend({
 
 	renderHome: function () {
 		$('.swear').html('bullshit.');
+		if (detailInstance != null) {
+			detailInstance.remove();
+		}
 	},
 
 	renderDetail: function(id) {
 		console.log('I clicked a thing!')
-		picGallery.get(id);
+		//picGallery.get(id);
 		console.log(id);
+		if (detailInstance != null) {
+			detailInstance.remove();
+		}
 		detailInstance = new DetailView({model: picGallery.get(id)})
 	}
 });
@@ -194,7 +201,6 @@ var appRouter = Backbone.Router.extend({
 // instantiating the collection constructor
 var picGallery = new PicsCollection();
 // setting as a global
-var detailInstance;
 
 var router = new appRouter();
 Backbone.history.start();
