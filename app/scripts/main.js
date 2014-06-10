@@ -161,7 +161,7 @@ var DetailView = Backbone.View.extend({
 var appRouter = Backbone.Router.extend({
 	routes: {
 		"" : "renderHome",
-		"photos/:id" : "renderUsers",
+		"photos/:id" : "renderDetail",
 		/*"users/:username"           : "renderUser",
 		"users/:username/favorites" : "renderUserFavorites"*/
 	},
@@ -174,8 +174,13 @@ var appRouter = Backbone.Router.extend({
 	},
 
 	renderHome: function () {
-		$('.swear').html('bullshiit.');
+		$('.swear').html('bullshit.');
 	},
+
+	renderDetail: function(id) {
+		console.log('I clicked a thing!')
+		
+	}
 	//collection.get(id) 
 	// renderUser: function (id) {
 	// 	console.log('profile route for', username)
@@ -222,6 +227,3 @@ picGallery.fetch().done(function(){
 	//detailInstance = new DetailView({model: picGallery.first()})
 });
 
-router.on('route:home', function() {
-	detailInstance = new DetailView({model: picGallery.first()})
-})
