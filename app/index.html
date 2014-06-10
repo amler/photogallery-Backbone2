@@ -20,6 +20,10 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <p class="swear"></p>
+        <ul>
+            <li><a href="#">Home</a></li>
+        </ul>
         <div class="slideshow-container">
             <div class="image-detail">
                 <!-- IMAGE DETAIL HERE-->
@@ -46,14 +50,16 @@
                 <img src=<%= url %>>
             </div>
             <input class="urlvalue" type="text" placeholder value=<%= url %>>
-            <input class="captionvalue" type="text" value=<%= caption ? caption: 'NO CAPTION' %>>
+            <input class="captionvalue" type="text" value="<%= caption ? caption : 'NO CAPTION' %>">
             <button class="save button">Save</button>
             <button class="new button">New</button>
         </script>
             <!-- THUMBNAILS TEMPLATE -->
         <script type="text/template" class="thumbnail-template">
-            <img src=<%= url %>>
-            <p><%= caption ? caption: 'NO CAPTION' %></p>
+            <a href="/#photos/<%= _id %>">   
+                <img src=<%= url %>>
+                <p><%= caption ? caption : 'NO CAPTION' %></p>
+            </a>
         </script>
         
         <!-- build:js scripts/vendor.js -->
