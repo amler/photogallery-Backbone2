@@ -167,8 +167,11 @@ var appRouter = Backbone.Router.extend({
 	},
 
 	initialize: function () {
-		console.log('AppRouter was just created!')
-	// instantiate the  view??
+		picGallery.fetch().done(function() {
+			picGallery.each(function (image) {
+				new ThumbnailView({model: image});
+			});
+		});
 	},
 
 	renderHome: function () {
@@ -181,29 +184,7 @@ var appRouter = Backbone.Router.extend({
 		console.log(id);
 		detailInstance = new DetailView({model: picGallery.get(id)})
 	}
-	//collection.get(id) 
-	// renderUser: function (id) {
-	// 	console.log('profile route for', username)
-	// 	$('.container').html('Check out '+ username + '\'s cool profile ');
-	// 	$('.container').append('<a href="/#users/'+username + '/favorites">'+ username +  '\'s favorites </a>');
-	// },
-
-/*	renderUsers: function () {
-		$('.container').html('USERS LIST WOW');
-	},
-
-	renderUser: function (username) {
-		console.log('profile route for', username)
-		$('.container').html('Check out '+ username + '\'s cool profile ');
-		$('.container').append('<a href="/#users/'+username + '/favorites">'+ username +  '\'s favorites </a>');
-	},
-
-	renderUserFavorites: function (username) {
-		console.log('favorites route for', username)
-		$('.container').html('Check out '+ username + '\'s favorites');
-	}
-*/
-})
+});
 
 
 /////////////////////////////
@@ -217,13 +198,4 @@ var detailInstance;
 
 var router = new appRouter();
 Backbone.history.start();
-
-picGallery.fetch().done(function(){
-	picGallery.each(function (image){
-		new ThumbnailView({model: image});
-	});
-	// creating the new view by passing it the first model object
-	//detailInstance = new DetailView({model: this.model})
-	//detailInstance = new DetailView({model: picGallery.first()})
-});
 
