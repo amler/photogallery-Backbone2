@@ -168,9 +168,7 @@ var appRouter = Backbone.Router.extend({
 
 	initialize: function () {
 		console.log('AppRouter was just created!')
-	// instantiate the  view
-
-
+	// instantiate the  view??
 	},
 
 	renderHome: function () {
@@ -179,7 +177,9 @@ var appRouter = Backbone.Router.extend({
 
 	renderDetail: function(id) {
 		console.log('I clicked a thing!')
-		
+		picGallery.get(id);
+		console.log(id);
+		detailInstance = new DetailView({model: picGallery.get(id)})
 	}
 	//collection.get(id) 
 	// renderUser: function (id) {
